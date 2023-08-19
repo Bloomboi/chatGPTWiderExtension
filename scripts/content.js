@@ -9,10 +9,18 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 // Function to apply the width change and print to the console
 function applyWidthChange(value) {
     let newWidth = value + 'rem';
-    let targetElements = document.querySelectorAll('.flex.p-4.gap-4.text-base.md\\:gap-6.md\\:max-w-2xl.lg\\:max-w-\\[38rem\\].xl\\:max-w-3xl.md\\:py-6.lg\\:px-0.m-auto');
-    targetElements.forEach(element => {
-        element.style.maxWidth = newWidth;
+    let selectors = [
+        '.flex.p-4.gap-4.text-base.md\\:gap-6.md\\:max-w-2xl.lg\\:max-w-\\[38rem\\].xl\\:max-w-3xl.md\\:py-6.lg\\:px-0.m-auto',
+        '.flex.p-4.gap-4.text-base.md\\:gap-6.md\\:max-w-3xl.md\\:py-6.lg\\:px-0.m-auto'
+    ];
+
+    selectors.forEach(selector => {
+        let targetElements = document.querySelectorAll(selector);
+        targetElements.forEach(element => {
+            element.style.maxWidth = newWidth;
+        });
     });
+
     console.log(`Applied max-width change: ${newWidth}`);
 }
 
@@ -31,16 +39,23 @@ function observeDOMChanges() {
         for(let mutation of mutationsList) {
             if (mutation.type === 'childList') {
                 // Check if the target element is present now
-                let targetElements = document.querySelectorAll('.flex.p-4.gap-4.text-base.md\\:gap-6.md\\:max-w-2xl.lg\\:max-w-\\[38rem\\].xl\\:max-w-3xl.md\\:py-6.lg\\:px-0.m-auto');
+                let selectors = [
+                    '.flex.p-4.gap-4.text-base.md\\:gap-6.md\\:max-w-2xl.lg\\:max-w-\\[38rem\\].xl\\:max-w-3xl.md\\:py-6.lg\\:px-0.m-auto',
+                    '.flex.p-4.gap-4.text-base.md\\:gap-6.md\\:max-w-3xl.md\\:py-6.lg\\:px-0.m-auto'
+                ];
                 
-                if (targetElements.length > 0) {
-                    chrome.storage.local.get('widthValue', function(data) {
-                        if (data.widthValue) {
-                            applyWidthChange(data.widthValue);
-                        }
-                    });
-                    // Since we've found the element and applied the change, we can disconnect the observer
-                    observer.disconnect();
+                for (const selector of selectors) {
+                    let targetElements = document.querySelectorAll(selector);
+                    if (targetElements.length > 0) {
+                        chrome.storage.local.get('widthValue', function(data) {
+                            if (data.widthValue) {
+                                applyWidthChange(data.widthValue);
+                            }
+                        });
+                        // Since we've found the element and applied the change, we can disconnect the observer
+                        observer.disconnect();
+                        break;
+                    }
                 }
             }
         }
