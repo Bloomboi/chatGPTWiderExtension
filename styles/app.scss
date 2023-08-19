@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@700&family=Fira+Sans:wght@200;500&display=swap');
+
+// Variables
+$darkGreen: #243427;
+$white: white;
+$firaSans: 'Fira Sans', sans-serif;
+
+// Global styles
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+}
+body {
+    font-size: 14px;
+    color: $white;
+    background-color: #75A99C;
+
+}
+
+h1, h3 {
+    font-family: $firaSans;
+    margin-bottom: 0.5rem;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 200; 
+}
+
+.container {
+    width: 240px;
+    border-radius: 2.5rem;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.slider-container {
+    display: flex; // To horizontally align the slider and value
+    align-items: center; // To vertically center them
+    padding-top: 0.5rem;
+}
+
+#wideAmountSlider {
+    font-family: $firaSans;
+    color: #ffffff;
+    margin-right: 2rem; // Updated to margin-right for spacing
+    appearance: none; // To override default appearance
+    width: 100%; // To take the full width of the parent
+    background:$darkGreen; // Black track
+
+    &::-webkit-slider-thumb {
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: $white;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    &::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background: $white;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    &::-moz-range-track {
+        width: 100%;
+        background:$darkGreen;
+    }
+
+    &::-ms-thumb {
+        width: 20px;
+        height: 20px;
+        background: $white;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    &::-ms-track {
+        width: 100%;
+        border-color: transparent;
+        background:$darkGreen;
+        color: transparent;
+    }
+}
+
+span {
+    font-family: $firaSans;
+    font-size: 18px;
+    display: inline-block; // Make it inline-block to accept width
+    width: 50px;           // Assign a fixed width
+    text-align: right;     // Align the text to the right
+}
+
+
+*, body {
+    border-radius: 1rem;
+}

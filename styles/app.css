@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@700&family=Fira+Sans:wght@200;500&display=swap");
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  color: white;
+  background-color: #75A99C;
+}
+
+h1, h3 {
+  font-family: "Fira Sans", sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.container {
+  width: 240px;
+  border-radius: 2.5rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+#wideAmountSlider {
+  font-family: "Fira Sans", sans-serif;
+  color: #ffffff;
+  margin-right: 2rem;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 100%;
+  background: #243427;
+}
+#wideAmountSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 20px;
+  height: 20px;
+  background: white;
+  cursor: pointer;
+  border-radius: 50%;
+}
+#wideAmountSlider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: white;
+  cursor: pointer;
+  border-radius: 50%;
+}
+#wideAmountSlider::-moz-range-track {
+  width: 100%;
+  background: #243427;
+}
+#wideAmountSlider::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  background: white;
+  cursor: pointer;
+  border-radius: 50%;
+}
+#wideAmountSlider::-ms-track {
+  width: 100%;
+  border-color: transparent;
+  background: #243427;
+  color: transparent;
+}
+
+span {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 18px;
+  display: inline-block;
+  width: 50px;
+  text-align: right;
+}
+
+*, body {
+  border-radius: 1rem;
+}/*# sourceMappingURL=app.css.map */
